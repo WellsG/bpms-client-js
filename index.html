@@ -1,0 +1,39 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery.json-2.3.js"></script>
+<script type="text/javascript" src="js/jquery.base64.js"></script>
+<script>
+//$.ajaxSetup({
+//  headers: {
+//    'Authorization': "Basic " + btoa("wguo:redhat")
+//  }
+//});
+
+$.ajax({
+    type: "POST",
+    url: "http://10.66.136.79:8080/business-central/rest/runtime/maitai/org.jbpm:evaluation:2.1/process/evaluation/start",
+    dataType: 'json',
+    //jsonp: "callback",
+    //jsonpCallback : "jsonCallback",
+    contentType: "application/json",
+    async: false,
+    beforeSend: function (xhr){
+        xhr.setRequestHeader('Authorization', "Basic " + btoa("wguo:redhat"));
+	xhr.setRequestHeader('Access-Control-Allow-Origin', "*"); 
+    },
+    headers: {
+       'Authorization': "Basic " + btoa("wguo:redhat"),
+       'Access-Control-Allow-Origin': "true"
+    },	
+    data: {"map_employee":"wguo","map_reason":"test js rest"},
+    success: function (){
+        alert('Thanks for your comment!'); 
+    }
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>
